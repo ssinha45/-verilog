@@ -1,0 +1,11 @@
+module half_subtractor(A,B,D,C);
+input A,B;
+output D,C;
+
+// Difference output
+assign D = A ^ B;
+
+// Borrow output
+assign C = ~A & B;
+
+endmodule
