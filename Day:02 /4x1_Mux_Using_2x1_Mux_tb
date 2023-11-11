@@ -1,0 +1,40 @@
+
+module four_to_one_Mux_tb;
+
+	// Inputs
+	reg [3:0] data_inputs;
+	reg [1:0] select;
+	reg [3:0] i;
+
+	// Outputs
+	wire mux_output;
+
+	// Instantiate the Unit Under Test (UUT)
+	four_to_one_Mux uut (
+		.data_inputs(data_inputs), 
+		.select(select), 
+		.mux_output(mux_output)
+	);
+
+	initial begin
+	   $monitor("Time:%0t, Data_Inputs=%b, select=%b, Mux_Output =%b",$time,data_inputs,select,mux_output);
+		for(i=4'd0; i<=4'd15; i=i+4'd1)begin
+		data_inputs=i;
+		select=2'b00;
+		#10;
+		
+		select=2'b01;
+		#10;
+		
+		select=2'b10;
+		#10;
+		
+		select=2'b11;
+		#10;
+		end
+		
+
+	end
+      
+endmodule
+
