@@ -1,0 +1,21 @@
+module two_to_one_Mux(A0,A1,S,Out);
+input A0,A1;
+input S;
+output Out;
+
+assign Out = (S==0)?A0:A1;
+endmodule
+
+module four_to_one_Mux(data_inputs,select,mux_output);
+input [3:0]data_inputs;
+input [1:0]select;
+output mux_output;
+
+wire [1:0] w;
+
+two_to_one_Mux mux1(.A0(data_inputs[0]),.A1(data_inputs[1]),.S(select[0]),.Out(w[0]));
+two_to_one_Mux mux2(.A0(data_inputs[2]),.A1(data_inputs[3]),.S(select[0]),.Out(w[1]));
+
+two_to_one_Mux final_mux(.A0(w[0]),.A1(w[1]),.S(select[1]),.Out(mux_output));
+
+endmodule
