@@ -1,1 +1,36 @@
+module two_to_one_Mux_tb;
 
+	// Inputs
+	reg A0,A1;
+	reg S;
+
+	// Outputs
+	wire Out;
+
+	// Instantiate the Unit Under Test (UUT)
+	two_to_one_Mux uut (
+		.A0(A0), 
+		.A1(A1),
+		.S(S), 
+		.Out(Out)
+	);
+
+	initial begin
+		$display("A0 | A1 | S | Out");
+		$display(".......");
+		$monitor(" %b | %b | %b | %b", A0, A1, S, Out);
+		A0=0;A1=0;S=0;
+		#10;
+		
+		A0=0;A1=1;S=1;
+		#10;
+		
+		A0=1;A1=0;S=0;
+		#10;
+		
+		A0=1;A1=1;S=1;
+		#10;
+		
+	end
+      
+endmodule
