@@ -1,0 +1,7 @@
+module two_to_one_Mux(A,S,Out);
+input [1:0] A;
+input S;
+output Out;
+
+assign Out = (S==0)?A[0]:A[1];
+endmodule
