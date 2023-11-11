@@ -1,0 +1,8 @@
+module bcd_to_excess3(bcd_in,exs3_out);
+input wire [3:0] bcd_in;
+output wire [3:0] exs3_out;
+
+// Excess_3 out;
+assign exs3_out = bcd_in + 4'b0011 ;
+
+endmodule
