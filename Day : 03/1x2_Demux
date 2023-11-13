@@ -1,0 +1,14 @@
+module one_to_two_demux(I,S,Y);
+
+input I,S;
+output reg [1:0]Y;
+
+always@(I,S)
+begin
+case(S)
+
+1'b0:Y[0]=I;
+1'b1:Y[1]=I;
+
+endcase
+end
