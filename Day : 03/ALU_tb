@@ -1,0 +1,45 @@
+
+module alu_tb;
+
+	// Inputs
+	reg [3:0] a;
+	reg [3:0] b;
+	reg [2:0] mode;
+	reg [3:0] i;
+	reg [2:0] j;
+
+	// Outputs
+	wire [3:0] out;
+
+	// Instantiate the Unit Under Test (UUT)
+	alu uut (
+		.a(a), 
+		.b(b), 
+		.mode(mode), 
+		.out(out)
+	);
+
+	initial begin
+		// Initialize Inputs
+		a = 0;
+		b = 0;
+		mode = 0;
+		
+		$monitor("Value of a=%b | b=%b | mode=%b | out=%b is:", a, b, mode, out);
+		
+		for(i=4'd0; i<=4'd15; i= i+4'd1)
+		begin
+		a=i;
+		b=i+4'd1;
+		#10;
+		for(j=3'd0; j<=3'd7; j=j+3'd1)
+		begin
+		mode=j;
+		#10;
+		end
+		end
+
+	end
+      
+endmodule
+
