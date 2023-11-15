@@ -1,0 +1,36 @@
+
+module D_Flip_Flop_tb;
+
+	// Inputs
+	reg D;
+	reg clk;
+	reg rst;
+
+	// Outputs
+	wire q;
+
+	// Instantiate the Unit Under Test (UUT)
+	D_Flip_Flop uut (
+		.D(D), 
+		.clk(clk), 
+		.rst(rst), 
+		.q(q)
+	);
+
+	initial begin
+		$monitor("Value of d=%b | clk = %b | rst = %b | q =%b ", D, clk, rst, q);
+		
+		D=0;clk=1;rst=0;#100;
+		 
+		D=0;clk=1;rst=1;#100;
+		
+		D=1;clk=0;rst=0;#100;
+		
+		D=1;clk=1;rst=0;#100;
+		
+		
+
+	end
+      
+endmodule
+
