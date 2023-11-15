@@ -1,0 +1,14 @@
+module D_Latch(D,En,Q,Qn);
+input D,En;
+output wire Q,Qn;
+
+wire R,S,Q_int,Qn_int;
+
+assign #1 R= (~D&En);
+assign #1 S= (D&En);
+assign #1 Q_int = ~(R|Qn_int);
+assign #1 Qn_int = ~(S|Q_int);
+assign Q=Q_int;
+assign Qn=Qn_int;
+
+endmodule
