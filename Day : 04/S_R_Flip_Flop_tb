@@ -1,0 +1,33 @@
+
+module S_R_Flip_Flop_tb;
+
+	// Inputs
+	reg S;
+	reg R;
+	reg clk;
+
+	// Outputs
+	wire q;
+	wire qn;
+
+	// Instantiate the Unit Under Test (UUT)
+	S_R_Flip_Flop uut (
+		.S(S), 
+		.R(R), 
+		.clk(clk), 
+		.q(q), 
+		.qn(qn)
+	);
+
+	initial begin
+		clk = 0;
+		 forever #10 clk = ~clk;
+	end
+	
+	initial begin
+	   S=0;R=0;
+		#100 S=0;R=1;
+      #100 S=1;R=0;
+		#100 S=1;R=1;
+		end
+endmodule
