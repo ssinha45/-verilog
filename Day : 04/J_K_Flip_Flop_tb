@@ -1,0 +1,34 @@
+
+module J_K_FLIP_FLOP_tb;
+
+	// Inputs
+	reg J;
+	reg K;
+	reg clk;
+
+	// Outputs
+	wire q;
+	wire qbar;
+
+	// Instantiate the Unit Under Test (UUT)
+	J_K_FLIP_FLOP uut (
+		.J(J), 
+		.K(K), 
+		.clk(clk), 
+		.q(q), 
+		.qbar(qbar)
+	);
+
+	initial begin
+		clk = 0;
+		    forever #10 clk = ~clk;
+	end
+   initial begin
+	   $monitor("Value of CLK = %b | J = %b | K =%b | q = %b | qbar =%b",clk, J, K, q, qbar);
+	   J=0; K =0;
+		#100 J=0; K=1;
+		#100 J=1; K=0;
+		#100 J=1; K=1;
+		end
+endmodule
+
