@@ -1,0 +1,35 @@
+
+module D_Latch_tb;
+
+	// Inputs
+	reg D;
+	reg En;
+
+	// Outputs
+	wire Q;
+	wire Qn;
+
+	// Instantiate the Unit Under Test (UUT)
+	D_Latch uut (
+		.D(D), 
+		.En(En), 
+		.Q(Q), 
+		.Qn(Qn)
+	);
+
+	initial begin
+		// Initialize Inputs
+		D = 0;
+		En = 0;
+
+		// Wait 100 ns for global reset to finish
+		#100 D=0;
+		#100 D=1;
+		#100 En=1;
+		     D=0;
+		#100 D=1;
+
+	end
+      
+endmodule
+
