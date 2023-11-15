@@ -1,0 +1,15 @@
+module D_Flip_Flop(D,clk,rst,q);
+input wire D,clk,rst;
+output reg q;
+
+always@(posedge clk or posedge rst)begin
+
+if (rst)
+q<= 1'b0;
+
+else
+q<=D;
+end
+
+
+endmodule
